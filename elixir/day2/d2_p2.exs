@@ -34,17 +34,22 @@ defmodule D2P2 do
         data
 
       _ ->
-        new_val =
-          calc_value(
-            action,
-            get_num(data, pos + 1),
-            get_num(data, pos + 2)
-          )
-
         data
-        |> List.replace_at(Enum.at(data, pos + 3), new_val)
+        |> replace_value(action, pos)
         |> calculate(pos + 4)
     end
+  end
+
+  defp replace_value(data, action, pos) do
+    new_val =
+      calc_value(
+        action,
+        get_num(data, pos + 1),
+        get_num(data, pos + 2)
+      )
+
+    data
+    |> List.replace_at(Enum.at(data, pos + 3), new_val)
   end
 
   defp get_num(data, pos) do

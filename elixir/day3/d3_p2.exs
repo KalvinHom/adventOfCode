@@ -7,19 +7,19 @@ defmodule D3P1 do
     line1 = String.split(line1, ",", trim: true)
     line2 = String.split(line2, ",", trim: true)
 
-    line1_points = build_points(line1)
-    line2_points = build_points(line2)
+    %{point_lengths: line1_points} = build_points(line1)
+    %{point_lengths: line2_points} = build_points(line2)
 
     intersections =
       MapSet.intersection(
-        Enum.into(Map.keys(line1_points.point_lengths), MapSet.new()),
-        Enum.into(Map.keys(line2_points.point_lengths), MapSet.new())
+        Enum.into(Map.keys(line1_points), MapSet.new()),
+        Enum.into(Map.keys(line2_points), MapSet.new())
       )
       |> MapSet.to_list()
 
     Enum.map(
       intersections,
-      &(Map.get(line1_points.point_lengths, &1) + Map.get(line2_points.point_lengths, &1))
+      &(Map.get(line1_points, &1) + Map.get(line2_points, &1))
     )
     |> Enum.min()
   end
