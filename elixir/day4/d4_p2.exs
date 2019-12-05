@@ -18,20 +18,15 @@ defmodule D4P2 do
   end
 
   defp has_repeat?(number) do
-    chunks =
+    digits =
       number
       |> Integer.digits()
-      |> Enum.chunk_every(4, 1)
 
-    repeat? =
-      chunks
-      |> Enum.any?(fn [w, x, y | z] ->
-        w != x && x == y and [y] != z
-      end)
-
-    # base case for first 3 nums
-    [w, x, y, _] = List.first(chunks)
-    repeat? || (w == x && x != y)
+    [0 | digits]
+    |> Enum.chunk_every(4, 1)
+    |> Enum.any?(fn [w, x, y | z] ->
+      w != x && x == y and [y] != z
+    end)
   end
 end
 
