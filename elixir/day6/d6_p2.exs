@@ -31,8 +31,6 @@ defmodule D6P2 do
     san_distances = get_distances(orbits, Map.get(orbits, "SAN"), %{}, 0)
     start_orbit = Map.get(orbits, "YOU")
     get_distance_to_san(orbits, start_orbit, san_distances)
-
-    # get counts of orbits from SAN to route
   end
 end
 
