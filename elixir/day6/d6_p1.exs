@@ -28,5 +28,9 @@ defmodule D6P1 do
   end
 end
 
-D6P1.run!()
-|> IO.inspect()
+Benchee.run(%{
+  "d6 p1" => fn ->
+    D6P1.run!()
+    |> IO.puts()
+  end
+})
