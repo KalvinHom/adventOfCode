@@ -19,6 +19,7 @@ defmodule D8P2 do
         end)
       end)
 
+    # playing around with Benchee,
     # was curious how much converting to map saves in performance
     # from not iterating list over and over.
     # conclusion: not much with this small dataset, 4ms ish.
