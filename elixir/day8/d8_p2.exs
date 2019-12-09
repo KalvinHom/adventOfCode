@@ -33,7 +33,7 @@ defmodule D8P2 do
       Enum.map(0..(width - 1), fn x ->
         # case Map.get(color_map, width * y + x) do
         case Enum.at(colors, width * y + x) do
-          "2" -> IO.write(IO.ANSI.black_baground() <> " ")
+          "2" -> IO.write(IO.ANSI.black_background() <> " ")
           "0" -> IO.write(IO.ANSI.white_background() <> "0")
           "1" -> IO.write(IO.ANSI.blue_background() <> "1")
         end
